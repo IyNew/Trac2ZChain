@@ -324,14 +324,14 @@ func PKCS5Padding(plaintext []byte, blockSize int) []byte {
 	return append(plaintext, padtext...)
 }
 
-//@brief:去除填充数据
+// @brief:去除填充数据
 func PKCS5UnPadding(origData []byte) []byte {
 	length := len(origData)
 	unpadding := int(origData[length-1])
 	return origData[:(length - unpadding)]
 }
 
-//@brief:AES加密
+// @brief:AES加密
 func AesEncrypt(origData, key []byte) ([]byte, error) {
 	block, err := aes.NewCipher(key)
 	if err != nil {
@@ -347,7 +347,7 @@ func AesEncrypt(origData, key []byte) ([]byte, error) {
 	return crypted, nil
 }
 
-//@brief:AES解密
+// @brief:AES解密
 func AesDecrypt(crypted, key []byte) ([]byte, error) {
 	block, err := aes.NewCipher(key)
 	if err != nil {
